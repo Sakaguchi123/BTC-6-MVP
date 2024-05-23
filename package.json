@@ -2,13 +2,16 @@
   "name": "btc-6-mvp",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "start": "nodemon server",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run",
+    "makeMigration": "knex migrate:make",
+    "makeSeed": "knex seed:make"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
