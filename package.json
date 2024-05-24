@@ -13,7 +13,7 @@
     "seed": "knex seed:run",
     "makeMigration": "knex migrate:make",
     "makeSeed": "knex seed:make",
-    "render": "npm install && npm knex migrate:latest && npm knex seed:run",
+    "render": "npm install && npm run migrate && npm run seed",
     "renderStart": "node ./server/server.js"
   },
   "dependencies": {
