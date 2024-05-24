@@ -2,54 +2,26 @@
  * @type { Object.<string, import("knex").Knex.Config> }
  */
 
-// import dotenv from "dotenv";
-// dotenv.config({ path: ".env" });
 require("dotenv").config({ path: ".env" });
 
 module.exports = {
-  client: "pg",
-  connection: {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+  development: {
+    client: "pg",
+    connection: {
+      user: process.env.POSTGRES_USER || process.env.DB_USER,
+      database: process.env.POSTGRES_DB || process.env.DB_NAME,
+    },
+    migrations: {
+      directory: "./db/migrations",
+    },
+    seeds: { directory: "./db/seeds" },
   },
-  migrations: {
-    directory: "./db/migrations",
-  },
-  seeds: {
-    directory: "./db/seeds",
+  production: {
+    client: "pg",
+    connection: process.env.DATABASE_URL,
+    migrations: {
+      directory: "./data/migrations",
+    },
+    seeds: { directory: "./data/seeds" },
   },
 };
-
-// module.exports = {
-//   development: {
-//     client: "pg",
-//     connection: {
-//       user: process.env.DB_USER,
-//       password: process.env.DB_PASSWORD,
-//       database: process.env.DB_NAME,
-//     },
-//     migrations: {
-//       directory: "./db/migrations",
-//     },
-//     seeds: {
-//       directory: "./db/seeds",
-//     },
-//   },
-
-// production: {
-//   client: "pg",
-//   connection: {
-//     database: "mvp_database",
-//     user: "username",
-//     password: "password",
-//   },
-//   pool: {
-//     min: 2,
-//     max: 10,
-//   },
-//   migrations: {
-//     tableName: "knex_migrations",
-//   },
-// },
-// };
