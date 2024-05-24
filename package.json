@@ -12,7 +12,9 @@
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
     "makeMigration": "knex migrate:make",
-    "makeSeed": "knex seed:make"
+    "makeSeed": "knex seed:make",
+    "render": "npm install && npm knex migrate:latest && npm knex seed:run",
+    "renderStart": "node ./server/server.js"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
