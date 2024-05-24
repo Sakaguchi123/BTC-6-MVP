@@ -1,11 +1,13 @@
 const knex = require("./knex");
-// const cors = require("cors");
+const cors = require("cors");
 const express = require("express");
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
+app.use(cors());
 // app.use(cors("http://localhost:5173"));
+// app.use(cors("https://btc-6-mvp-frontend.onrender.com"));
 app.use(express.json());
 app.use(express.static("dist"));
 

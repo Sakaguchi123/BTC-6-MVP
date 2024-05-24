@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import { Button } from "@chakra-ui/react";
 import { EmailIcon } from "@chakra-ui/icons";
 
-// axios.defaults.baseURL = "http://localhost:3000";
+// const backend = import.meta.env.VITE_REACT_APP_BACKEND_URL;
+axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_BACKEND_URL || "http://localhost:3000";
 
 export default function App() {
   async function fetchData() {
