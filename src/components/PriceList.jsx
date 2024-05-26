@@ -11,7 +11,7 @@ export const PriceList = (props) => {
   const createTrTag = tableData.map((obj, i) => {
     return (
       <Tr key={i}>
-        <Td textAlign={'center'}>{obj.SMName}</Td>
+        <Td textAlign={'center'}>{obj.smName}</Td>
         <Td textAlign={'center'}>
           <ArrowDownIcon color={'blue'} boxSize={5} />
           {obj.cheapestPrice + '円'}
@@ -27,10 +27,9 @@ export const PriceList = (props) => {
   //-------------------------------------------------------
 
   return (
-    <div className='tableContainer'>
-      {tableData.length === 0 ?
-        <p>食品名を選択してください</p>
-      : <TableContainer>
+    <>
+      {tableData.length === 0 || (
+        <TableContainer className='tableContainer'>
           <Table variant='simple'>
             <Thead>
               <Tr>
@@ -55,7 +54,7 @@ export const PriceList = (props) => {
             {/* --------------------- */}
           </Table>
         </TableContainer>
-      }
-    </div>
+      )}
+    </>
   );
 };

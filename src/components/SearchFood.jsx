@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   Input,
   NumberInput,
@@ -12,7 +11,7 @@ import {
 import '../styles/searchFood.scss';
 
 export const SearchFood = (props) => {
-  const { fetchList, selectedFood, setSelectedFood, setTableData } = props;
+  const { fetchList, selectedFood, setSelectedFood, getProductNameList } = props;
 
   //---------------------------------------------------------
   //商品名の重複削除
@@ -26,36 +25,6 @@ export const SearchFood = (props) => {
       {obj.productName}
     </option>
   ));
-  //---------------------------------------------------------
-  //選択した商品のリストを取得する
-  const getProductNameList = async (food) => {
-    const productList = await axios
-      .get(`/api/product?productName=${food.slice(1)}`)
-      .then((res) => res.data);
-    makeTableData(productList);
-  };
-
-  //table表示用データ
-  const makeTableData = (productList) => {
-    const SMArr = Array.from(new Set(productList.map((obj) => obj.SMName)));
-    const tableData = SMArr.map((oneSM) => {
-      const listBySM = productList.filter((obj) => oneSM === obj.SMName);
-      const priceList = listBySM.map((obj) => obj.price);
-
-      const cheapestPrice = Math.min(...priceList);
-      const highestPrice = Math.max(...priceList);
-      const averagePrice =
-        listBySM.reduce((acc, crr) => acc + crr.price, 0) / listBySM.length;
-
-      return {
-        SMName: oneSM,
-        cheapestPrice,
-        highestPrice,
-        averagePrice
-      };
-    });
-    setTableData(tableData);
-  };
   //---------------------------------------------------------
 
   return (

@@ -5,13 +5,14 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
-  Button
+  ModalCloseButton
 } from '@chakra-ui/react';
-import { Form } from './Form';
+import { Form } from './Form/Form';
 
 export const PopUpModal = (props) => {
   const { isOpen, onClose } = props;
+  //-------------------------------------------------------
+
   return (
     <>
       <Modal
@@ -25,16 +26,12 @@ export const PopUpModal = (props) => {
         <ModalContent>
           <ModalHeader pb={2}>title</ModalHeader>
           <ModalCloseButton />
-          <ModalBody pt={0} pb={0}>
+          <ModalBody pt={0}>
             {/* -------- */}
-            <Form />
+            <Form onClose={onClose} />
             {/* -------- */}
           </ModalBody>
-          <ModalFooter pt={1}>
-            <Button colorScheme='teal' size={'sm'} onClick={onClose}>
-              Save
-            </Button>
-          </ModalFooter>
+          <ModalFooter pt={1}></ModalFooter>
         </ModalContent>
       </Modal>
     </>
