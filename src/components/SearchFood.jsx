@@ -35,7 +35,6 @@ export const SearchFood = (props) => {
           getProductNameList(e.target.value);
         }}
         placeholder='食品名'
-        size='sm'
         ml={3}
         mr={3}
       >
@@ -44,9 +43,9 @@ export const SearchFood = (props) => {
 
       <p>￥</p>
 
-      <Input id='price' placeholder='価格' type='number' size='sm' w={150} mr={1} />
+      <Input id='price' placeholder='価格' type='number' w={150} mr={1} />
 
-      <NumberInput size={'sm'} min={0} w={150} ml={3} mr={1}>
+      <NumberInput min={0} w={150} ml={3} mr={1}>
         <NumberInputField />
         <NumberInputStepper>
           <NumberIncrementStepper />

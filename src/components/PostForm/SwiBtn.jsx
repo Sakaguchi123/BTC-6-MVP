@@ -12,10 +12,10 @@ export const SwiBtn = (props) => {
       variant='solid'
       colorScheme='teal'
       aria-label='Done'
-      fontSize='20px'
       position={'fixed'}
       bottom={'3%'}
       right={'3%'}
+      size='lg'
       icon={<AddIcon />}
       onClick={onOpen}
     />

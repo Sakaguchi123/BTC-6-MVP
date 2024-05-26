@@ -5,6 +5,7 @@ import '../styles/all.scss';
 import { SearchFood } from './SearchFood';
 import { PriceList } from './PriceList';
 import { PostForm } from './PostForm/PostForm';
+import { DisplayList } from './DisplayList';
 
 axios.defaults.baseURL =
   import.meta.env.VITE_REACT_APP_BACKEND_URL || 'http://localhost:3000';
@@ -52,7 +53,6 @@ export default function App() {
     });
     setTableData(tableData);
   };
-
   //---------------------------------------------------------
 
   return (
@@ -68,6 +68,7 @@ export default function App() {
         selectedFood={selectedFood}
         tableData={tableData}
       />
+      <DisplayList />
       <SearchFoodList.Provider value={[getProductNameList, selectedFood]}>
         <PostForm />
       </SearchFoodList.Provider>

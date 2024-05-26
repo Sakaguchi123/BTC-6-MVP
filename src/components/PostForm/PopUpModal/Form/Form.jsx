@@ -44,7 +44,7 @@ export const Form = ({ onClose }) => {
         {/* ----------------------------- */}
         {/* <SmFc control={control} /> */}
         <FormControl>
-          <FormLabel color={'gray'} mb={0} fontSize={13}>
+          <FormLabel color={'gray'} mb={0}>
             スーパー名
           </FormLabel>
           <Controller
@@ -56,7 +56,6 @@ export const Form = ({ onClose }) => {
                 options={smOptions}
                 closeMenuOnSelect={true}
                 selectedOptionColorScheme='teal'
-                size='xs'
                 value={smOptions.find((x) => x.value === field.value)}
                 onChange={(val) => {
                   field.onChange(val?.value);
@@ -76,7 +75,7 @@ export const Form = ({ onClose }) => {
         <PAreaFc register={register} />
         {/* ----------------------------- */}
 
-        <Button colorScheme='teal' size={'sm'} type='submit' onClick={onClose}>
+        <Button colorScheme='teal' type='submit' onClick={onClose} m={5} left={'80%'}>
           保存
         </Button>
       </form>

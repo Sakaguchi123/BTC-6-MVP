@@ -5,10 +5,10 @@ export const PriceFc = ({ register }) => {
 
   return (
     <FormControl>
-      <FormLabel color={'gray'} mt={2} mb={0} fontSize={13}>
+      <FormLabel color={'gray'} mt={2} mb={0}>
         価格
       </FormLabel>
-      <Input size={'xs'} {...register('price', {})} />
+      <Input {...register('price', {})} />
     </FormControl>
   );
 };

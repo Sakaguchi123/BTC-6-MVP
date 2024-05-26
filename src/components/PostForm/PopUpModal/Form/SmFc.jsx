@@ -24,7 +24,7 @@ export const SmFc = () => {
 
   return (
     <FormControl>
-      <FormLabel color={'gray'} mb={0} fontSize={13}>
+      <FormLabel color={'gray'} mb={0}>
         スーパー名
       </FormLabel>
 
@@ -37,7 +37,6 @@ export const SmFc = () => {
             options={smOptions}
             closeMenuOnSelect={true}
             selectedOptionColorScheme='teal'
-            size='xs'
             value={smOptions.find((x) => x.value === field.value)}
             onChange={(val) => {
               field.onChange(val?.value);

@@ -1,6 +1,5 @@
 import { useDisclosure } from '@chakra-ui/react';
 
-// import '../../styles/postForm.scss';
 import { PopUpModal } from './PopUpModal/PopUpModal';
 import { SwiBtn } from './SwiBtn';
 

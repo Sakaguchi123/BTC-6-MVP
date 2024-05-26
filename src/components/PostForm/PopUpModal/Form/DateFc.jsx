@@ -5,10 +5,10 @@ export const DateFc = ({ register }) => {
 
   return (
     <FormControl>
-      <FormLabel color={'gray'} mt={2} mb={0} fontSize={13}>
+      <FormLabel color={'gray'} mt={2} mb={0}>
         日付
       </FormLabel>
-      <Input size={'xs'} {...register('date', {})} />
+      <Input {...register('date', {})} />
     </FormControl>
   );
 };

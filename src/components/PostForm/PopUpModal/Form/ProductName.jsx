@@ -23,7 +23,7 @@ export const ProductNameFc = ({ control }) => {
 
   return (
     <FormControl>
-      <FormLabel color={'gray'} mt={2} mb={0} fontSize={13}>
+      <FormLabel color={'gray'} mt={2} mb={0}>
         商品名
       </FormLabel>
 
@@ -36,7 +36,6 @@ export const ProductNameFc = ({ control }) => {
             options={productOptions}
             closeMenuOnSelect={true}
             selectedOptionColorScheme='teal'
-            size='xs'
             value={productOptions.find((x) => x.value === field.value)}
             onChange={(val) => {
               field.onChange(val?.value);

@@ -3,7 +3,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton
 } from '@chakra-ui/react';
@@ -18,20 +17,19 @@ export const PopUpModal = (props) => {
       <Modal
         onClose={onClose}
         isOpen={isOpen}
-        size={'xs'}
         isCentered
         scrollBehavior='inside'
+        size='lg'
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader pb={2}>title</ModalHeader>
+          <ModalHeader pb={2}>登録</ModalHeader>
           <ModalCloseButton />
           <ModalBody pt={0}>
             {/* -------- */}
             <Form onClose={onClose} />
             {/* -------- */}
           </ModalBody>
-          <ModalFooter pt={1}></ModalFooter>
         </ModalContent>
       </Modal>
     </>

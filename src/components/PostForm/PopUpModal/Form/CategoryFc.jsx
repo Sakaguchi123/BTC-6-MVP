@@ -13,7 +13,7 @@ export const CategoryFc = ({ control }) => {
 
   return (
     <FormControl>
-      <FormLabel color={'gray'} mt={2} mb={0} fontSize={13}>
+      <FormLabel color={'gray'} mt={2} mb={0}>
         カテゴリー
       </FormLabel>
 
@@ -22,7 +22,6 @@ export const CategoryFc = ({ control }) => {
         control={control}
         render={({ field }) => (
           <Select
-            size='xs'
             selectedOptionColorScheme='teal'
             options={categoryOptions}
             value={categoryOptions.find((x) => x.value === field.value)}

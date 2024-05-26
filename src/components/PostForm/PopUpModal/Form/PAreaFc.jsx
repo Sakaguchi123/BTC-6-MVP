@@ -5,10 +5,10 @@ export const PAreaFc = ({ register }) => {
 
   return (
     <FormControl>
-      <FormLabel color={'gray'} mt={2} mb={0} fontSize={13}>
+      <FormLabel color={'gray'} mt={2} mb={0}>
         産地
       </FormLabel>
-      <Input size={'xs'} {...register('production_area', {})} />
+      <Input {...register('production_area', {})} />
     </FormControl>
   );
 };
