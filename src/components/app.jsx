@@ -1,25 +1,39 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { Button } from "@chakra-ui/react";
-import { EmailIcon } from "@chakra-ui/icons";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-// const backend = import.meta.env.VITE_REACT_APP_BACKEND_URL;
-axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_BACKEND_URL || "http://localhost:3000";
+import '../styles/all.scss';
+import { SearchFood } from './SearchFood';
+import { PriceList } from './PriceList';
+import { PostForm } from './PostForm/PostForm';
+
+axios.defaults.baseURL =
+  import.meta.env.VITE_REACT_APP_BACKEND_URL || 'http://localhost:3000';
 
 export default function App() {
-  async function fetchData() {
-    await axios("/api/list").then(res => console.log(res.data));
-  }
+  const [fetchList, setFetchList] = useState([]);
+  const [selectedFood, setSelectedFood] = useState('');
+  const [tableData, setTableData] = useState([]);
+
+  //---------------------------------------------------------
   useEffect(() => {
-    fetchData();
-  });
+    axios('/api/list').then((res) => setFetchList(res.data));
+  }, []);
+  //---------------------------------------------------------
 
   return (
     <>
-      <Button leftIcon={<EmailIcon />} colorScheme="teal" variant="solid" m={"20px"}>
-        あいうお
-      </Button>
-      <h1>hello</h1>
+      <SearchFood
+        fetchList={fetchList}
+        selectedFood={selectedFood}
+        setSelectedFood={setSelectedFood}
+        setTableData={setTableData}
+      />
+      <PriceList
+        fetchList={fetchList}
+        selectedFood={selectedFood}
+        tableData={tableData}
+      />
+      <PostForm />
     </>
   );
 }
