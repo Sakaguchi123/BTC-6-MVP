@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { CreatableSelect } from 'chakra-react-select';
-import { Button, FormControl, FormLabel } from '@chakra-ui/react';
+import { Button, FormControl, FormLabel, useToast } from '@chakra-ui/react';
 import { Controller, useForm } from 'react-hook-form';
 
 import { SearchFoodList } from '../../../App';
@@ -17,6 +17,7 @@ export const Form = ({ onClose }) => {
   const [getProductNameList, selectedFood] = useContext(SearchFoodList);
   //react-hook-formのカスタムフック
   const { register, handleSubmit, control } = useForm();
+  const toast = useToast();
 
   //-------------------------------------------------------
   const smList = async () => {
@@ -31,8 +32,31 @@ export const Form = ({ onClose }) => {
     smList();
   }, []);
   //-------------------------------------------------------
+  //post
   const onSubmit = async (data) => {
-    await axios.post('/api/list', data).then((res) => console.log(res));
+    //100g or 1個ごとの価格計算
+    const meatCal = () => (data.price = Math.round((data.price / data.quantity) * 100));
+    const otherCal = () => (data.price = data.price / data.quantity);
+    data.category === '1' ? meatCal() : otherCal();
+
+    const post = new Promise((resolve, reject) => {
+      axios
+        .post('/api/list', data)
+        .then((response) => resolve(response))
+        .catch((err) => reject(err));
+    });
+
+    toast.promise(post, {
+      position: 'top',
+      success: { title: 'Promise resolved', description: '登録されました！' },
+      error: { title: 'Promise rejected', description: 'エラーが発生しました。' },
+      loading: {
+        title: 'Promise pending',
+        description: 'データ送信中です。'
+      }
+    });
+
+    //リストの再レンダリング
     getProductNameList(selectedFood);
   };
   //-------------------------------------------------------

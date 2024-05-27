@@ -37,10 +37,10 @@ export const PriceList = (props) => {
                   スーパー名
                 </Th>
                 <Th color={'rgb(95, 129, 214)'} textAlign={'center'}>
-                  最安値
+                  最安値(1個あたり)
                 </Th>
                 <Th color={'rgb(214, 95, 125)'} textAlign={'center'}>
-                  最高値
+                  最高値(1個あたり)
                 </Th>
                 <Th color={'gray'} textAlign={'center'}>
                   平均

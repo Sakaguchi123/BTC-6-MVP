@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.static('dist'));
 //-------------------------------------------------------
 
-//return : 登録されている全リスト（Array[Object]）
+//return : 登録されている全リスト limitがある場合はそれに従う（Array[Object]）
 app.get('/api/list', (req, res) => {
   knex('buy_list')
     .select({
@@ -24,6 +24,8 @@ app.get('/api/list', (req, res) => {
       supermarketName: 'supermarket_name',
       date: 'date'
     })
+    // .then(() => console.log(req.query.limit))
+    .then((result) => (req.query.limit ? result.slice(0, req.query.limit) : result))
     .then((result) => res.send(result));
 });
 

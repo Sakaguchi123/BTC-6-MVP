@@ -5,7 +5,7 @@ import '../styles/all.scss';
 import { SearchFood } from './SearchFood';
 import { PriceList } from './PriceList';
 import { PostForm } from './PostForm/PostForm';
-import { DisplayList } from './DisplayList';
+import { DisplayList } from './DisplayList/DisplayList';
 
 axios.defaults.baseURL =
   import.meta.env.VITE_REACT_APP_BACKEND_URL || 'http://localhost:3000';
@@ -33,7 +33,6 @@ export default function App() {
 
   //table表示用データ
   const makeTableData = (productList) => {
-    console.log(productList);
     const SMArr = Array.from(new Set(productList.map((obj) => obj.smName)));
     const tableData = SMArr.map((oneSM) => {
       const listBySM = productList.filter((obj) => oneSM === obj.smName);
