@@ -1,7 +1,7 @@
 import { ArrowDownIcon, ArrowUpIcon } from '@chakra-ui/icons';
 import { Table, Thead, Tbody, Tr, Th, Td, TableContainer } from '@chakra-ui/react';
 
-import '../styles/priceList.scss';
+import '../styles/all.scss';
 
 export const PriceList = (props) => {
   const { tableData } = props;
@@ -28,9 +28,10 @@ export const PriceList = (props) => {
 
   return (
     <>
-      {tableData.length === 0 || (
-        <TableContainer className='tableContainer'>
-          <Table variant='simple'>
+      <TableContainer className='tableContainer'>
+        {tableData.length === 0 ?
+          <p>食品を選択して下さい。</p>
+        : <Table variant='simple'>
             <Thead>
               <Tr>
                 <Th color={'gray'} textAlign={'center'}>
@@ -53,8 +54,8 @@ export const PriceList = (props) => {
 
             {/* --------------------- */}
           </Table>
-        </TableContainer>
-      )}
+        }
+      </TableContainer>
     </>
   );
 };

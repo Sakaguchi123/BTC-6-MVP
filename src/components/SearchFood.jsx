@@ -1,17 +1,9 @@
-import {
-  Input,
-  NumberInput,
-  Select,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper
-} from '@chakra-ui/react';
+import { Select } from '@chakra-ui/react';
 
-import '../styles/searchFood.scss';
+import '../styles/all.scss';
 
 export const SearchFood = (props) => {
-  const { fetchList, selectedFood, setSelectedFood, getProductNameList } = props;
+  const { fetchList, setSelectedFood, getProductNameList } = props;
 
   //---------------------------------------------------------
   //商品名の重複削除
@@ -40,20 +32,6 @@ export const SearchFood = (props) => {
       >
         {options}
       </Select>
-
-      <p>￥</p>
-
-      <Input id='price' placeholder='価格' type='number' w={150} mr={1} />
-
-      <NumberInput min={0} w={150} ml={3} mr={1}>
-        <NumberInputField />
-        <NumberInputStepper>
-          <NumberIncrementStepper />
-          <NumberDecrementStepper />
-        </NumberInputStepper>
-      </NumberInput>
-
-      <p>{selectedFood.slice(0, 1) === '1' ? 'g' : '個'}</p>
     </div>
   );
 };

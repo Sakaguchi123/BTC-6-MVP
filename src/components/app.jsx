@@ -58,7 +58,6 @@ export default function App() {
     <>
       <SearchFood
         fetchList={fetchList}
-        selectedFood={selectedFood}
         setSelectedFood={setSelectedFood}
         getProductNameList={getProductNameList}
       />
