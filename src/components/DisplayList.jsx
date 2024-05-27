@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import {
   Table,
   Thead,
@@ -9,10 +11,9 @@ import {
   Box,
   Td,
   Divider,
-  AbsoluteCenter
+  AbsoluteCenter,
+  Button
 } from '@chakra-ui/react';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 
 export const DisplayList = () => {
   const [trTag, setTrTag] = useState([]);
@@ -20,6 +21,7 @@ export const DisplayList = () => {
   const [pnSelect, setPnSelect] = useState('');
   const [smOptions, setSmOptions] = useState([]);
   const [pnOptions, setPnOptions] = useState([]);
+  const [toggleBtn, setToggleBtn] = useState('price');
 
   //-------------------------------------------------------
   //スーパーごとに絞り込むoption
@@ -62,7 +64,15 @@ export const DisplayList = () => {
 
   // tableタグを作成;
   const createTrTag = async () => {
-    const allListData = await axios.get('/api/list').then((res) => res.data);
+    const allListData = await axios
+      .get('/api/list')
+      .then((res) => res.data)
+      .then((res) =>
+        //sort処理
+        toggleBtn === 'price' ?
+          res.sort((a, b) => a.price - b.price)
+        : res.sort((a, b) => (a.date < b.date ? 1 : -1))
+      );
     //!(if使わない方法を考えたい)
     if (smSelect && pnSelect) {
       const smFilterList = smSelectFilter(allListData);
@@ -83,7 +93,7 @@ export const DisplayList = () => {
     makeSmOptions();
     makePnOptions();
     createTrTag();
-  }, [smSelect, pnSelect]);
+  }, [smSelect, pnSelect, toggleBtn]);
   //-------------------------------------------------------
 
   return (
@@ -103,6 +113,7 @@ export const DisplayList = () => {
         >
           {smOptions}
         </Select>
+
         <Select
           placeholder='食品ごとに絞り込む'
           color={'gray'}
@@ -112,7 +123,34 @@ export const DisplayList = () => {
         >
           {pnOptions}
         </Select>
+
+        <Button
+          ml={5}
+          mt={1}
+          size={'sm'}
+          borderRadius={0}
+          borderLeftRadius='20'
+          bgColor={toggleBtn === 'price' ? 'teal' : ''}
+          color={'white'}
+          onClick={() => setToggleBtn('price')}
+          _hover={{ bg: '' }}
+        >
+          価格
+        </Button>
+        <Button
+          mt={1}
+          size={'sm'}
+          borderRadius={0}
+          borderRightRadius='20'
+          bgColor={toggleBtn === 'date' ? 'teal' : ''}
+          color={'white'}
+          _hover={{ bg: '' }}
+          onClick={() => setToggleBtn('date')}
+        >
+          日付
+        </Button>
       </Box>
+
       <TableContainer mt={5} className='tableContainer'>
         <Table variant='simple'>
           <Thead>
