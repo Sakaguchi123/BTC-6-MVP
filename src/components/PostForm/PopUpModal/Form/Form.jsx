@@ -15,7 +15,6 @@ import { ProductNameFc } from './ProductName';
 export const Form = ({ onClose }) => {
   const [smOptions, setSMOptions] = useState([]);
   const [getProductNameList, selectedFood] = useContext(SearchFoodList);
-
   //react-hook-formのカスタムフック
   const { register, handleSubmit, control } = useForm();
 
