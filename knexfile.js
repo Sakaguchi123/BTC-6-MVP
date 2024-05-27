@@ -8,8 +8,8 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      user: process.env.POSTGRES_USER || 'user',
-      database: process.env.POSTGRES_DB || 'mvp_db'
+      user: process.env.POSTGRES_USER || process.DB_USER,
+      database: process.env.POSTGRES_DB || process.env.DB_NAME
     },
     migrations: {
       directory: './db/migrations'

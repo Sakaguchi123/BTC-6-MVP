@@ -1,8 +1,17 @@
-# React + Vite
+# BTC-6 ソロMVP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 主な使用技術
 
-Currently, two official plugins are available:
+- react 18.2.0
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- express 4.19.2
+- knex 3.1.0
+- pg 8.11.5
+- chakra-ui 2.8.2
+- sass 1.77.2
+
+## Installation
+
+```bash
+npm install
+```
