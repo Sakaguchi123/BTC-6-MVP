@@ -1,5 +1,7 @@
 # BTC-6 ソロMVP
 
+## 使用している主な技術
+
 <p>
 <img src="https://img.shields.io/badge/react-blue.svg?logo=react&style=for-the-badge">
 <img src="https://img.shields.io/badge/express-gray.svg?logo=express&style=for-the-badge">
@@ -12,18 +14,30 @@
 <img src="https://img.shields.io/badge/sass-gray.svg?logo=sass&style=for-the-badge">
 </p>
 
-## 主な使用技術
+## 概要
 
-- react 18.2.0
-- express 4.19.2
-- knex 3.1.0
-- pg 8.11.5
-- chakra-ui 2.8.2
-- sass 1.77.2
-- vite 5.2.0
+買い物履歴を登録・閲覧することが出来ます。
 
 ## Installation
 
 ```bash
 npm install
 ```
+
+環境変数 (.envファイル)
+
+```bash
+DB_USER=
+DB_PASSWORD=
+DB_NAME='mvp_db'
+```
+
+## コマンド一覧
+
+| コマンド | 実行される処理           |
+| -------- | ------------------------ |
+| start    | サーバー起動(nodemon)    |
+| dev      | フロントエンド起動(vite) |
+| migrate  | migrateの実行            |
+| seed     | seedの実行               |
+| render   | renderデプロイ用         |
