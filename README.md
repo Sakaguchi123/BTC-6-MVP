@@ -1,5 +1,13 @@
 # BTC-6 ソロMVP
 
+<img src="https://img.shields.io/badge/react-blue.svg?logo=react">
+<img src="https://img.shields.io/badge/express-gray.svg?logo=express">
+<img src="https://img.shields.io/badge/knex-gray.svg?logo=knexdotjs">
+<img src="https://img.shields.io/badge/postgresql-white.svg?logo=postgresql">
+<img src="https://img.shields.io/badge/chakraui-white.svg?logo=chakraui">
+<img src="https://img.shields.io/badge/sass-gray.svg?logo=sass">
+<img src="https://img.shields.io/badge/vite-yellow.svg?logo=vite">
+
 ## 主な使用技術
 
 - react 18.2.0
