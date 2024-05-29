@@ -100,7 +100,7 @@ const checkLogin = (req, res, next) => {
 app.get('/userinfo', checkLogin, (req, res) => {
   res.render('userinfo.html', { user: req.user });
 });
-//////////////////////////////
+////////////////////////////////////////////////////
 // passportとStrategyの紐づけ
 passport.use(
   new GoogleStrategy((username, password, cb) => {
