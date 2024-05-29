@@ -1,6 +1,8 @@
 const knex = require('./knex');
 const cors = require('cors');
 const express = require('express');
+import * as passport from 'passport';
+import * as GoogleStrategy from 'passport-google-oauth20';
 
 //-------------------------------------------------------
 const app = express();
@@ -72,6 +74,59 @@ app.post('/api/list', (req, res) => {
     .insert(req.body)
     .then(() => res.send('ok'));
 });
+
+//-------------------------------------------------------
+//passport.js test
+
+// ログイン状態を直接「req.user」から調べる
+app.get('/', (req, res) => {
+  if (!req.user) {
+    return res.redirect('/login');
+  }
+
+  res.render('home.html', { user: req.user });
+});
+
+// ログイン状態を調べるミドルウェア
+const checkLogin = (req, res, next) => {
+  if (!req.user) {
+    return res.redirect('/login');
+  }
+
+  return next();
+};
+
+// ログイン状態チェックをミドルウェアに任せる
+app.get('/userinfo', checkLogin, (req, res) => {
+  res.render('userinfo.html', { user: req.user });
+});
+////////////////////////////////////////////////////
+// passportとStrategyの紐づけ
+passport.use(
+  new GoogleStrategy((username, password, cb) => {
+    try {
+      const user = 'user'.find((v) => {
+        return v.username === username;
+      });
+
+      // 妥当なログインではない
+      if (!user) {
+        return cb(null, false);
+      }
+
+      // 妥当なログインではない
+      if (user.password !== password) {
+        return cb(null, false);
+      }
+
+      // 妥当なログイン
+      return cb(null, user);
+    } catch (err) {
+      // エラー発生
+      return cb(err);
+    }
+  })
+);
 
 //-------------------------------------------------------
 app.listen(PORT, () => console.log(`listening on port : ${PORT}`));
